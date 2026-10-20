@@ -1,0 +1,7 @@
+target/
+.idea/
+*.iml
+
+# NullCraft's own deployment notes (server address, firewall) stay private
+DEPLOYMENT-NULLCRAFT.md
+README.he.md

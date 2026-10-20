@@ -1,0 +1,7 @@
+name: NullCraftPrefixes
+version: '${project.version}'
+main: dev.nullcraft.prefixes.NullCraftPrefixes
+api-version: '1.21'
+description: '${project.description}'
+author: NULLCRAFT
+softdepend: [PlaceholderAPI, LuckPerms]

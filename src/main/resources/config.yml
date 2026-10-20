@@ -1,0 +1,58 @@
+# NullCraftPrefixes - sends the NullCraft resource pack to every player on join: the rank
+# badges plus NullCraft's custom item models, for every version from 1.21 to 1.21.11.
+# It is the network's only pack, so turn off pack sending in any other plugin (two packs
+# that draw the same characters fight each other, and older clients may skip one).
+
+http:
+  # Serve the pack from this server. Turn this off on servers that only send the pack
+  # and set pack.url to the address of the server that serves it.
+  enabled: true
+  # A free TCP port on this server that players can reach.
+  port: 8085
+  # The public address players download the pack from: your server's IP or domain.
+  public-host: "127.0.0.1"
+
+pack:
+  # Leave empty to use the address above. Set it on servers with http.enabled: false.
+  # {file} is replaced with the pack's file name, which changes whenever the pack does.
+  url: ""
+  # true kicks players who decline the pack. With false, a player who declines sees the
+  # text badge from the list below instead of the picture.
+  required: false
+  # The text on the download screen, as MiniMessage.
+  prompt: "<gradient:#c084fc:#f472b6><bold>NULLCRAFT</bold></gradient> <gray>rank badges and custom items"
+  # Ticks to wait after joining before sending the pack.
+  delay-ticks: 20
+  # Log each player's answer to the pack (loaded, declined, failed download).
+  log-status: true
+
+# What players without the badge pack see in place of each badge, as MiniMessage. A player
+# counts as having the pack once their client reports it loaded; until then, and if they
+# declined it or turned server packs off, chat, join/quit messages and the TAB placeholder
+# %rel_nullcraft_prefix% show this text. The console always gets the text.
+badges:
+  "": "<dark_gray>[</dark_gray><yellow>GOD I</yellow><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><gold>GOD II</gold><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><red>GOD III</red><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><light_purple>GOD IV</light_purple><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><dark_red>GOD V</dark_red><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><yellow>TRIAL HELPER</yellow><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><yellow>HELPER</yellow><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><yellow>SR HELPER</yellow><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><yellow>HEAD HELPER</yellow><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><blue>TRIAL MOD</blue><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><blue>MOD</blue><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><blue>SR MOD</blue><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><blue>HEAD MOD</blue><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><red>TRIAL ADMIN</red><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><red>ADMIN</red><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><red>SR ADMIN</red><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><red>HEAD ADMIN</red><dark_gray>]</dark_gray>"
+  "": "<dark_gray>[</dark_gray><dark_red>OWNER</dark_red><dark_gray>]</dark_gray>"
+
+# Custom item models for 1.21-1.21.3 clients. Since 1.21.4 a model is picked by a
+# custom_model_data string; older clients only know a number. Each string listed here gets
+# its number added to the item (players' inventories, pickups and opened containers), and
+# the pack draws that number with the same model. Keep in step with tools/make_pack.py.
+legacy-item-models:
+  god_blade: 1001
